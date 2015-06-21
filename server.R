@@ -28,13 +28,6 @@ calculateExpectedAge=function(currentAge,income,exercise,smoking,areaR,locationR
 shinyServer(
         function(input, output) {
                 output$age<-renderPrint(paste(input$age,"Years old"))
-                output$income<-renderPrint(paste(input$income,"USD"))
-                output$exercise<-renderPrint(if(input$exercise==1)"Yes" else "No")
-                output$smoke<-renderPrint(if(input$smoke==1)"Yes" else "No")
-                output$areaofresidence<-renderPrint(if(input$areaofresidence==1)"Urban" else if(input$areaofresidence==2)"Semi-urban" else "Rural")
-                output$locationofresidence<-renderPrint(if(input$locationofresidence==1)"Near Sea" else "Far Inland")
-                output$worktype<-renderPrint(if(input$worktype==1)"Sedantary" else "Active")
-                output$gender<-renderPrint(if(input$gender==1)"Male" else "Female")
                 output$prediction <- renderPrint({calculateExpectedAge(input$age,input$income,input$exercise,input$smoke,input$areaofresidence,input$locationofresidence,input$worktype,input$gender)})
         }
 )
